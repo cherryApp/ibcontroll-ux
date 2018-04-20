@@ -1,0 +1,23 @@
+<div class="form-group">
+  <label [for]="elementID">{{ label }}</label>
+  <select *ngIf="options.length > 5"
+    name="elementID"
+    [ngModel]="model"
+    (ngModelChange)="onUpdate($event)"
+    [id]="elementID"
+    class="form-control">
+    <option *ngFor="let option of options" [value]="option.key">
+      {{ option.label }}
+    </option>
+  </select>
+  <div *ngIf="options.length <= 5" class="btn-group col-12">
+      <button
+        *ngFor="let option of options"
+        class="btn btn-info"
+        type="button"
+        [class.selected]="model == option.key"
+        (click)="onUpdateButton(option.key)">
+        {{ option.label }}
+      </button>
+  </div>
+</div>

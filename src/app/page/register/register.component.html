@@ -1,0 +1,30 @@
+<div class="main">
+  <h3>Registration</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div [ngSwitch]="item.type" *ngFor="let item of formElements">
+      <app-form-element *ngSwitchDefault
+        [label]="item.label"
+        [model]="formData[item.key]"
+        (modelUpdate)="setData(item.key, $event)"
+        [updatePolicy]="item.updatePolicy"
+        [pattern]="item.pattern"
+        [type]="item.type || 'text'"
+        [errorMessage]="item.errorMessage"></app-form-element>
+      <app-form-select
+        *ngSwitchCase="'select'"
+        [label]="item.label"
+        [model]="formData[item.key]"
+        [options]="item.options"
+        (modelUpdate)="setData(item.key, $event)"
+        [updatePolicy]="item.updatePolicy"
+        [type]="item.type || 'text'"></app-form-select>
+
+    </div>
+    <button type="submit" class="btn btn-primary">registration</button>
+    <button class="btn btn-light">cancel</button>
+  </form>
+</div>
+
+<pre>
+  {{ formData | json }}
+</pre>

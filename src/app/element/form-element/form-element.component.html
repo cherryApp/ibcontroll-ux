@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label [for]="elementID">{{ label }}</label>
+  <input
+    name="elementID"
+    [ngModel]="model"
+    (ngModelChange)="onUpdate($event)"
+    [id]="elementID"
+    [type]="type"
+    class="form-control"
+    #modelRef="ngModel"
+    [ngModelOptions]="updatePolicy"
+    [pattern]="pattern">
+<div [hidden]="modelRef.valid || modelRef.pristine"
+    class="error-message">
+      {{ errorMessage || 'Data is required.' }}
+  </div>
+</div>

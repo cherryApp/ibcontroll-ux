@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   public title: string = "";
-  private isLogin: boolean = false;
+  public isLogin: boolean = false;
   constructor() {
     if (window.localStorage.isLogin) {
       this.isLogin = true;
